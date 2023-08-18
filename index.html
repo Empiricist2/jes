@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <p>Validated Form</p>
+<body id="pagebody">
+
+    <style>
+        #digitalme{
+           
+            text-align: center;
+            font-size: 30px;
+           margin-top: 10%;
+        }
+
+        .codm{
+            text-align: center;
+            font-size: 50px;
+        }
+
+    </style>
+    <!-- <p>Validated Form</p>
     <form id="registrationForm">
         <div>
             <label for="username">Username:</label>
@@ -152,6 +167,61 @@ const form = document.getElementById("registrationForm");
                 confirmPasswordError.style.color ="blue";
             }
         }
-        </script>
+        </script> -->
+
+<h1 id="countme"></h1>
+<script>
+// let k =new Date(23465845346);
+// alert(k)
+// const xmas = new Date('Aug 18, 2023 14:07:00').getTime();
+
+// function myCountDown(){
+//     let now = new Date().getTime()
+//     let distance = xmas-now;
+//     let days =Math.floor (distance/(1000*60*60*24));
+
+//     let hours = Math.floor((distance%(24*60*60*1000))/(60*60*1000));
+
+//     let minutes = Math.floor ((distance%(60*60*1000))/(60*1000));
+
+//     let seconds = Math.floor((distance%(60*1000))/(1000));
+
+//     document.getElementById('countme').innerHTML =`${days} D: ${hours}: H: ${minutes} M: ${seconds}S`
+
+// if(distance<=0){
+//     clearInterval(k);
+//     document.getElementById('countme').innerHTML ='game up';
+
+   
+// }
+
+// }
+// let K = setInterval(myCountDown, 1000)
+// </script>
+<h3 class="codm">DIGITAL TIME</h3>
+
+<h1 id="digitalme"></h1>
+<script>
+   
+    function digitalTime(){
+
+        let now = new Date() .getTime()
+
+        let hours = Math.floor((now%(24*60*60*1000))/(60*60*1000));
+
+        let minutes = Math.floor ((now%(60*60*1000))/(60*1000));
+
+        let seconds = Math.floor ((now%(60*1000))/(1000));
+
+        document.getElementById('digitalme').innerHTML = `${hours} HR: ${minutes} MIN: ${seconds} SEC`
+
+
+    }
+
+setInterval(digitalTime, 1000)
+    
+
+</script>
+
 </body>
 </html>
