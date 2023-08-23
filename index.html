@@ -7,8 +7,104 @@
 </head>
 <body id="pagebody">
 
+
+    <h1>Room Rental Service(HOTEL)</h1>
+    <form id="rentForm">
+      <label for="days">Enter number of days:</label>
+      <input type="number" id="days"  min="1"><br>
+      <br>
+      <button type="button" onclick="Amounttopay()">Amount to pay </button>
+    </form>
+    <div id="flow" style="display: none;">
+      <p>Total Amount: <span id="totalAmount"></span> </p>
+      <p>Time Left: <span id="countdown"></span></p>
+    </div>
+    <div id="timeupp" style="display: none;">
+      <p>Your rent has expired. Move out.</p>
+    </div>
+
+
+
+
+
+
+
+<!-- <div style="text-align: center;">
+<h1> Rental Service Company</h1>
+<form>
+    <label for="days">Number of days:</label>
+
+    <input type="number"id="days" min="1"required><br>
+<br>
+    <input type="button" value="Amount to Pay" onclick="Amounttopay()">
+</form>
+
+     <p id="totalCost"></p>
+     <p id="countdown"></p>
+</div> -->
+
+
+
+    <!-- <div style="text-align: center;width:100%">
+        <h1 class="counter"
+        style="font-size:60px;">
+        <span id="Day">00</span>
+        <span id="colm">:</span>
+        <span id="hor">00</span>
+        <span id="colmm">:</span>
+        <span id="min">00</span>
+        <span id="colmmm">:</span>
+        <span id="sec">00</span>
+    
+</h1>
+
+<div>
+    <button id="start"style="background:green">
+        Start Trip
+    </button>
+    <button id="stop"style="background:orange">
+         Stop Trip
+    </button>
+</div>
+ -->
+
+
+
+
+
+
+
+
+
+
+    <!-- <div style="text-align: center;width:100%">
+        <h1 class="counter"
+        style="font-size:60px;">
+    <span id="min">00</span>
+    <span id="colm">:</span>
+    <span id="sec">00</span>
+</h1>
+
+<div style="margin-left:-50px">
+    <button 
+    id="start"style="background:green">start</button>
+
+        <button 
+        id="pause"style="background:orange">pause</button>
+
+         <button 
+         id="cont"style="background:green">continue</button>
+
+        <button 
+        id="stop"style="background:red">stop</button>
+        
+        <button 
+        id="reset"style="background:red">Reset</button>
+       </div>
+
+    </div> -->
     <style>
-        #digitalme{
+        /* #digitalme{
            
             text-align: center;
             font-size: 30px;
@@ -20,7 +116,53 @@
             text-align: center;
             font-size: 50px;
         }
+        
+         #pause,#stop,#cont,#reset
+        {display:none}
 
+     
+
+     #stop{
+        display: none;
+     } */
+
+
+     #pagebody {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 150px;
+  background-color: rgb(19, 17, 17);
+}
+
+h1 {
+  color: #d71919;
+}
+
+form {
+  margin-top: 20px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #f20808;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#flow, #timeupp {
+  margin-top: 20px;
+  color: red;
+}
+
+#countdown {
+  font-weight: bold;
+  color: red;
+}
+
+label{
+    color: red;
+}
     </style>
     <!-- <p>Validated Form</p>
     <form id="registrationForm">
@@ -199,7 +341,7 @@ const form = document.getElementById("registrationForm");
 // }
 // let K = setInterval(myCountDown, 1000)
 // </script>
-<h3 class="codm">DIGITAL TIME</h3>
+<!-- <h3 class="codm">DIGITAL TIME</h3>
 
 <h1 id="digitalme"></h1>
 <script>
@@ -232,7 +374,177 @@ const form = document.getElementById("registrationForm");
 setInterval(digitalTime, 1000)
     
 
+</script> -->
+<!-- 
+<script>
+
+    let minn=document.getElementById
+    ('min');
+    let secc=document.getElementById
+    ('sec');
+    let startt=document.getElementById
+    ('start');
+    let pausee = document.getElementById
+    ('pause');
+    let contt = document.getElementById
+    ('cont');
+    let stopp = document.getElementById
+    ('stop');
+    let resett = document.getElementById
+    ('reset');
+
+    let efg=0;
+    let k;
+    let stopengine;
+
+
+    function engine(){
+        ++efg;
+        let mm= parseInt(1/60);
+        let ss = efg%60;
+        
+
+        if(ss==7){
+            stopengine();
+            resett.innerHTML = 'PENS UP, CLICK TO START AGAIN'
+        }else{
+            mm=(mm<10)? '0'+mm:mm;
+            ss=(ss<10)? '0'+ss:ss;
+
+            minn.innerHTML= mm;
+            secc.innerHTML=ss;
+        }
+    };
+
+    function count(){
+        k=setInterval(engine, 1000);
+
+    }
+
+    function startengine(){
+        count();
+        startt.style.display="none";
+        pausee.style.display="inline";
+        stopp.style.display="inline";
+    }
+
+    function pauseengine(){
+        clearInterval(k);
+        pausee.style.display="none";
+        contt.style.display="inline";
+    }
+
+    function contengine(){
+        count();
+        pausee.style.display="inline";
+        contt.style.display="none";
+    }
+
+    stopengine=function(){
+        clearInterval(k);
+        pausee.style.display="none";
+        stopp.style.display="none";
+        resett.style.display="inline";
+        contt.style.display='none';
+    }
+
+    function resetengine(){
+        clearInterval(k);
+        resett.style.display="none";
+        efg=0;
+        document.getElementById('min').innerHTML='00';
+        document.getElementById('sec').innerHTML='00';
+        startt.style.display="inline";
+        startt.innerHTML='START AGAIN';
+    }
+
+    startt.addEventListener('click',startengine);
+
+    pausee.addEventListener('click',pauseengine);
+
+    contt.addEventListener('click',contengine);
+
+    stopp.addEventListener('click',stopengine);
+    
+    resett.addEventListener('click',resetengine);
+</script> -->
+
+
+<!-- 
+<script>
+    let timeLeft = document.getElementById("timeLeft");
+function Amounttopay(){
+    
+    let pricePerDay =5000;
+    let days = document.getElementById("days").value;
+    
+    let totalCost = pricePerDay*days;
+    document.getElementById("totalCost").innerHTML="Total cost : #" + totalCost;
+    let expirationTime=  new Date() . getTime() + days * 24 * 60 * 60 * 1000;
+
+    countdownInterval = setInterval(function()  {
+let currentTime = new Date() . getTime();
+ let timeLeft = expirationTime - currentTime;
+
+    if (timeLeft<=0){
+        clearInterval(countdownInterval);
+        document.getElementById("countdown").innerHTML = "Your rent has expired. Move out!";
+     }else {
+        
+         let daysleft =Math.floor (timeLeft / (1000*60*60*24));
+
+         let hoursleft = Math.floor((timeLeft % (24*60*60*1000))/(60*60*1000));
+
+         let minutesleft = Math.floor ((timeLeft % (60*60*1000))/(60*1000));
+
+         let secondsleft = Math.floor((timeLeft % (60*1000))/(1000));
+         document.getElementById("countdown").innerHTML =`${days} D: ${hours}: H: ${minutes} M: ${seconds}S`
+     }
+    }, 1000);
+   
+} -->
 </script>
 
+<script>
+const pricePerDay = 5000;
+let k;
+
+function Amounttopay() {
+  let days = parseInt(document.getElementById('days').value);
+  let totalAmount = pricePerDay * days;
+  
+  document.getElementById('totalAmount').innerHTML = '#' + totalAmount;
+  document.getElementById('flow').style.display = 'block';
+  
+  count(days);
+}
+
+function count(days) {
+  let expirationTime = new Date().getTime() + (days * 24 * 60 * 60 * 1000);
+  
+   k = setInterval(function() {
+    let now = new Date().getTime();
+   let timeLeft = expirationTime - now;
+    
+    if (timeLeft <= 0) {
+      clearInterval(k);
+      
+    } else {
+      let daysLeft = Math.floor(timeLeft / (24 * 60 * 60 * 1000));
+      let hoursLeft = Math.floor((timeLeft % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+      let minutesLeft = Math.floor((timeLeft % (60 * 60 * 1000)) / (60 * 1000));
+      let secondsLeft = Math.floor((timeLeft % (60 * 1000)) / 1000);
+      
+      document.getElementById('countdown').innerHTML = `${daysLeft}d ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
+    }
+  }, 1000);
+
+}
+
+function timeup() {
+  document.getElementById('flow').style.display = 'none';
+  document.getElementById('timeupp').style.display = 'block';
+}
+</script>
 </body>
 </html>
